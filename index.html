@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر قطع الكمبيوتر</title>
+
+    <style>
+        /* إعادة تعيين الإعدادات الافتراضية */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* خلفية متدرجة هادئة لتبرز جمال وتأثير الزجاج الأبيض الشفاف */
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* الحاوية الرئيسية بتصميم الزجاج الأبيض الشفاف */
+        .glass-container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.35); /* زجاج أبيض شبه شفاف */
+            backdrop-filter: blur(16px); /* تأثير ضبابية الزجاج الفاخر */
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5); /* حد زجاجي أبيض ناعم */
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* ظل طبيعي خفيف جداً بدون إضاءة */
+        }
+
+        /* عنوان المتجر بلون داكن أنيق ليناسب التصميم الأبيض */
+        h1 {
+            color: #3c87ff;
+            font-size: 28px;
+            margin-bottom: 35px;
+            font-weight: bold;
+        }
+
+        /* حاوية الروابط */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* تصميم المستطيلات (الأزرار) الزجاجية البيضاء */
+        .links a {
+            display: block;
+            color: #1e293b; /* لون نص داكن وواضح */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.45); /* زجاج أبيض خفيف للمربعات */
+            border: 1px solid rgba(255, 255, 255, 0.6); /* حد أبيض للمستطيل */
+            border-radius: 14px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* تأثير تقريب الماوس (Hover): تضخم سلس وزيادة بياض الزر فقط */
+        .links a:hover {
+            transform: scale(1.04); /* تأثير التضخم المطلبوب */
+            background: rgba(255, 255, 255, 0.75); /* يصبح المستطيل أكثر بياضاً عند الوقوف عليه */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- الواجهة الزجاجية البيضاء بالكامل -->
+    <div class="glass-container">
+        
+        <h1>متجر Mermtex للأقمشة</h1>
+
+        <!-- الأزرار والمستطيلات البيضاء التفاعلية -->
+        <div class="links">
+            <a href="/about">من نحن</a>
+            <a href="/products">المنتجات</a>
+            <a href="/contact">اتصل بنا</a>
+            <a href="/register">إنشاء الحساب</a>
+            <a href="/login">تسجيل الدخول</a>
+            <a href="/cart">السلة</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب</title>
+
+    <style>
+        /* ضع CSS هنا */
+/* إعدادات عامة */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* الصفحة */
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #eef4ff, #dce8ff);
+    min-height: 100vh;
+    color: #172033;
+    padding: 30px 15px;
+}
+
+/* الحاوية الرئيسية */
+.box {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    background: #fff;
+    border-radius: 18px;
+    padding: 38px 42px;
+    box-shadow: 0 15px 45px rgba(0,0,0,.12);
+}
+
+/* العناوين */
+h1 {
+    color: #1769e0;
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 32px;
+}
+
+h2 {
+    color: #273449;
+    margin: 22px 0 15px;
+    font-size: 22px;
+}
+
+/* شبكة المنتجات */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+/* البطاقات */
+.card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
+    background: #f8fafc;
+}
+
+/* ترتيب العناصر */
+.row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* الحقول */
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #273449;
+}
+
+.field input,
+.field textarea,
+.field select {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background: #f8fafc;
+    font: inherit;
+    outline: none;
+}
+
+.field textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* تأثير التركيز */
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+    border-color: #1769e0;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(23,105,224,.12);
+}
+
+/* الأزرار */
+button,
+.btn {
+    display: inline-block;
+    border: 0;
+    border-radius: 10px;
+    background: #1769e0;
+    color: #fff;
+    padding: 12px 18px;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .2s;
+}
+
+button:hover,
+.btn:hover {
+    background: #0d56c7;
+}
+
+/* الأزرار الخطيرة */
+.danger {
+    background: #dc3545;
+}
+
+.danger:hover {
+    background: #b91c2b;
+}
+
+/* النصوص والأسعار */
+.muted {
+    color: #64748b;
+}
+
+.price {
+    font-weight: bold;
+    color: #1769e0;
+    font-size: 19px;
+}
+
+.total {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1769e0;
+    text-align: left;
+    margin-top: 20px;
+}
+
+/* الرسائل */
+.alert {
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #174ea6;
+    margin-bottom: 15px;
+}
+
+.flash {
+    padding: 10px 14px;
+    background: #fef3c7;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #854d0e;
+}
+
+/* المنتجات الفارغة */
+.empty {
+    text-align: center;
+    padding: 45px;
+    color: #64748b;
+}
+
+/* صورة المنتج */
+.product-img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/* تنسيقات الجدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: right;
+    vertical-align: middle;
+}
+
+th {
+    background: #f1f5f9;
+    color: #273449;
+}
+
+/* الهاتف */
+@media (max-width: 600px) {
+    .box {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>إتمام الطلب</h1>
+
+        <form method="POST" action="{{ url_for('checkout') }}">
+
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+            <!-- قسم عنوان التوصيل -->
+<h2>عنوان التوصيل</h2>
+
+{% if addresses %}
+
+    {% for address in addresses %}
+
+        <div class="card">
+
+            <label>
+                <input
+                    type="radio"
+                    name="address_id"
+                    value="{{ address['id'] }}"
+                    {% if loop.first %}checked{% endif %}
+                >
+
+                {{ address['full_name'] }}
+                — {{ address['city'] }}
+                — {{ address['address'] }}
+                — {{ address['phone'] }}
+            </label>
+
+        </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="alert">
+        أضف عنوان توصيل أولًا.
+    </div>
+
+    <a class="btn" href="{{ url_for('addresses') }}">
+        إضافة عنوان
+    </a>
+
+{% endif %}
+            <!-- قسم طريقة الدفع -->
+<h2>طريقة الدفع</h2>
+
+<div class="field">
+
+    <select name="payment_method">
+
+        <option value="cash_on_delivery">
+            الدفع عند الاستلام
+        </option>
+
+        <option value="bank_transfer">
+            تحويل بنكي
+        </option>
+
+    </select>
+
+</div>
+            <!-- قسم الملاحظات -->
+<h2>ملاحظات</h2>
+
+<div class="field">
+
+    <textarea
+        name="notes"
+        placeholder="ملاحظات الطلب">
+    </textarea>
+
+</div>
+            <!-- قسم رمز الخصم -->
+<h2>رمز الخصم</h2>
+
+<div class="row">
+
+    <input
+        style="flex:1;min-width:180px"
+        name="coupon"
+        placeholder="رمز الخصم"
+    >
+
+    <button type="submit">
+        تأكيد الطلب
+    </button>
+
+</div>
+            <!-- قسم المجموع -->
+<p class="total">
+    المجموع:
+    {{ '%.0f'|format(subtotal) }} دج
+</p>
+        </form>
+
+        <!-- قسم المنتجات -->
+<h2>المنتجات</h2>
+
+<div class="grid">
+
+    {% if items %}
+
+        {% for item in items %}
+
+            <div class="card">
+
+                <strong>
+                    {{ item['name'] }}
+                </strong>
+
+                <p>
+                    {{ item['quantity'] }}
+                    ×
+                    {{ '%.0f'|format(item['price']) }}
+                    دج
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty">
+            سلة المشتريات فارغة.
+        </div>
+
+    {% endif %}
+
+</div>
+    </div>
+
+</body>
+</html>
