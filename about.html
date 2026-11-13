@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف الشركة </title>
+    <!-- استدعاء خط Cairo الاحترافي -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <style>
+        /* التنسيق الكلاسيكي النظيف والأبيض */
+        body {
+            font-family: 'Cairo', Arial, sans-serif;
+            background-color: #f8fafc; /* خلفية هادئة جداً لإبراز بياض المقال */
+            margin: 0;
+            padding: 0;
+            color: #1e293b; /* لون نص رمادي داكن مريح للقراءة */
+            line-height: 1.8;
+        }
+
+        /* شريط التنقل - أبيض كلاسيكي نظيف */
+        nav {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #475569;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #0284c7; /* لون أزرق رسمي عند التمرير */
+        }
+
+        /* حاوية المقال (ملف الشركة الرئيسي) */
+        .article-container {
+            max-width: 850px; /* عرض مثالي لقراءة المقالات والتقارير */
+            margin: 50px auto;
+            background-color: #ffffff; /* أبيض نظيف بالكامل */
+            padding: 50px 60px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        /* ترويسة المقال وعنوان الشركة */
+        .article-header {
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 20px;
+            margin-bottom: 35px;
+        }
+
+        .meta-info {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 15px;
+        }
+
+        h1 {
+            color: #0f172a;
+            font-size: 32px;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+        }
+
+        p.lead-text {
+            font-size: 18px;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        /* الفقرات والنصوص الداخلية */
+        .article-body p {
+            font-size: 16px;
+            color: #334155;
+            margin-bottom: 25px;
+            text-align: justify; /* محاذاة النص لتظهر ككتاب رسمي */
+        }
+
+        /* تنسيق وإدراج الصور داخل المقال */
+        .article-image {
+            margin: 35px 0;
+            text-align: center;
+        }
+
+        .article-image img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .image-caption {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* 📌 الجدول الكلاسيكي النظيف للملفات الرسمية */
+        table {
+            width: 100%;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            margin: 40px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9; /* رمادي فاتح جداً ورسمي */
+            color: #0f172a;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-bottom: 2px solid #cbd5e1;
+            text-align: center;
+        }
+
+        td {
+            padding: 14px;
+            text-align: center;
+            color: #334155;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc; /* تلوين الأسطر الزوجية بنقاء */
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* متجاوب مع الهواتف الذكية */
+        @media (max-width: 768px) {
+            .article-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            th, td {
+                padding: 10px 5px !important;
+                font-size: 13px !important;
+            }
+            th:nth-child(3), td:nth-child(3),
+            th:nth-child(4), td:nth-child(4),
+            th:nth-child(6), td:nth-child(6) {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل الأبيض -->
+    <nav>
+        <a href="/">الرئيسية</a>
+        <a href="/products">المنتجات</a>
+        <a href="/contact">اتصل بنا</a>
+        <a href="/cart">السلة</a>
+    </nav>
+
+    <!-- حاوية المقال الأبيض النظيف -->
+    <div class="article-container">
+        
+        <!-- ترويسة التقرير والمقال -->
+        <div class="article-header">
+            <div class="meta-info">
+                <span></span>
+                <span>•</span>
+                <span>ملف الشركة</span>
+            </div>
+            <p class="lead-text">من نحن</p>
+        </div>
+
+        <!-- نص المقال -->
+        <div class="article-body">
+
+                    <h1>خطوة واعدة في سوق المنسوجات: انطلاق شركة Mermtex لاستيراد الأقمشة من قلب قسنطينة</h1>
+
+            <p>في خطوة استراتيجية تهدف إلى تلبية الطلب المتزايد على المنسوجات الراقية في السوق الجزائري، أعلنت شركة Mermtex عن إطلاق عمل رسميًا مع مطلع عام 2026، متخذة من عاصمة الشرق، مدينة قسنطينة العريقة، مقرًا رئيسيًا لعملياتها. وجاء هذا الإطلاق ليمثل جسرًا تجاريًا جديدًا يربط بين جودة التصنيع العالمي واحتياجات السوق المحلية.</p>
+            
+            <h1>لماذا مدينة قسنطينة؟</h1>
+
+            <p>لم يكن اختيار مدينة قسنطينة كمركز رئيسي للشركة وليد الصدفة، بل جاء بناءً على دراسة جغرافية واقتصادية دقيقة:</p>
+            <p>الموقع الاستراتيجي: تعد قسنطينة القطب الاقتصادي والنبض التجاري لمنطقة الشرق الجزائري، مما يسهل عمليات التوزيع واللوجستيات لجميع الولايات المجاورة.</p>
+            <p>الإرث الثقافي: تشتهر المدينة تاريخيًا بقطاع الحرف والخياطة التقليدية والعصرية (مثل قندورة الفرقاني القسنطينية)، مما يجعلها السوق الأكثر تقديرًا للأقمشة الفاخرة والخامات المتميزة.</p>
+            <!-- 📌 الصورة الأولى في وسط سياق المقال -->
+            <div class="article-image">
+                <!-- استبدل الرابط باسم صورتك المحلية في مجلدك، مثل: coding-session.jpg -->
+                <img src="MSI.png" alt="">
+                <div class="image-caption"></div>
+            </div>
+            <h1>تحالفات مباشرة مع كبرى المصانع الصينية</h1>
+            <p>بالتزامن مع انطلاقتها القوية في عام 2026، نجحت إدارة شركة Mermtex في إبرام تعاقدات استراتيجية ومباشرة مع نخبة من كبرى المصانع الصينية الرائدة في قطاع النسيج. هذه الشراكات المباشرة بدون وسيط تضمن لزبائن الشركة ميزتين تنافسيتين:</p>
+            <p>* أسعار جملة تنافسية: توفر هامش ربح ممتاز للتجار وأصحاب المصانع المحلية لتعزيز قدراتهم التنافسية.</p>
+            <p>* استدامة التوريد: تدفق مستمر وضخم للسلع لتلبية الطلبيات الكبيرة والمستعجلة دون انقطاع.</p>
+
+            <!-- 📌 الصورة الثانية مكملة للمقال -->
+            <div class="article-image">
+                <img src="aaa.jpeg" alt="">
+                <div class="image-caption"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
