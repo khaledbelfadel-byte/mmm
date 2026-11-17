@@ -1698,6 +1698,5 @@ def init_db_complete():
 
 init_db = init_db_complete
     init_db ()
-
 if __name__ == "__main__":
     app.run()
